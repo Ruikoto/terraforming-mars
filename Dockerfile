@@ -20,6 +20,13 @@ FROM install AS builder
 # Copy sources
 COPY . .
 
+# Init an empty .git folder
+RUN git init && \
+    git config user.email "you@example.com" && \
+    git config user.name "Your Name" && \
+    git add . && \
+    git commit -m "Initial commit"
+
 # Run building
 RUN npm run build 
 
