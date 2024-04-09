@@ -41,7 +41,7 @@ export class ArabiaTerraBoard extends MarsBoard {
     builder.land().land().land().land().land(STEEL);
 
     if (gameOptions.shuffleMapOption) {
-      builder.shuffle(rng); // , SpaceName.HECATES_THOLUS, SpaceName.ELYSIUM_MONS, SpaceName.ARSIA_MONS_ELYSIUM, SpaceName.OLYMPUS_MONS);
+      builder.shuffle(rng, SpaceName.TIKHONAROV, SpaceName.LADON, SpaceName.FLAUGERGUES, SpaceName.CHARYBDIS);
     }
 
     const spaces = builder.build();
@@ -49,16 +49,12 @@ export class ArabiaTerraBoard extends MarsBoard {
   }
 
   public constructor(spaces: ReadonlyArray<Space>) {
-    super(spaces);
-  }
-
-  public override getVolcanicSpaceIds() {
-    return [
+    super(spaces, undefined, [
       SpaceName.TIKHONAROV,
       SpaceName.LADON,
       SpaceName.FLAUGERGUES,
       SpaceName.CHARYBDIS,
-    ];
+    ]);
   }
 
   public override getSpaces(spaceType: SpaceType): Array<Space> {

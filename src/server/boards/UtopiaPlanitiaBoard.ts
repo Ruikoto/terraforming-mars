@@ -1,5 +1,4 @@
 import {SpaceBonus} from '../../common/boards/SpaceBonus';
-import {SpaceName} from '../SpaceName';
 import {BoardBuilder} from './BoardBuilder';
 import {Random} from '../../common/utils/Random';
 import {GameOptions} from '../game/GameOptions';
@@ -36,13 +35,13 @@ export class UtopiaPlanitiaBoard extends MarsBoard {
     builder.land().land().land(STEEL, STEEL).ocean(PLANT).land(PLANT);
 
     if (gameOptions.shuffleMapOption) {
-      builder.shuffle(rng, SpaceName.NOCTIS_CITY, SpaceName.THARSIS_THOLUS, SpaceName.ASCRAEUS_MONS, SpaceName.ARSIA_MONS, SpaceName.PAVONIS_MONS);
+      builder.shuffle(rng);
     }
     const spaces = builder.build();
     return new UtopiaPlanitiaBoard(spaces);
   }
 
   public constructor(spaces: ReadonlyArray<Space>) {
-    super(spaces);
+    super(spaces, undefined, []);
   }
 }
